@@ -3,50 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Scratch.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout Spacing="25" Padding="30">
+    <Grid RowDefinitions="1*, 1*, 1*"
+           MaximumWidthRequest="400"
+            Padding="20">
 
-            <Label 
+        <Label Grid.Row="0"
                 Text="Make a new Note!"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <!--<Label 
+        <!--<Label 
                 Text="Welcome to .NET Multi-platform App UI"
                 SemanticProperties.HeadingLevel="Level1"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
                 HorizontalOptions="Center" />-->
 
-            <Editor 
+        <Editor Grid.Row="1"
                 Placeholder="Start Writing"
                 HorizontalOptions="Center" 
                 x:Name="NoteEditor"
                 HeightRequest ="500"
                 WidthRequest="500"/>
 
-            <!--<Label 
+        <!--<Label 
                 Text="Current count: 0"
                 FontSize="18"
                 FontAttributes="Bold"
                 x:Name="CounterLabel"
                 HorizontalOptions="Center" />-->
 
-            <!--<Button 
+        <!--<Button 
                 Text="Click me"
                 FontAttributes="Bold"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />-->
 
-            <!--<Image
+        <!--<Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 WidthRequest="250"
                 HeightRequest="310"
                 HorizontalOptions="Center" />-->
 
-        </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>
