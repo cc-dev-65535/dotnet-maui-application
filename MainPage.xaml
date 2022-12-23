@@ -3,79 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Scratch.MainPage">
 
-    <ScrollView>
-        <Grid RowDefinitions="1*, 1*, 4*"
-           MaximumWidthRequest="400"
-            Padding="20">
+    <!--<ScrollView>-->
+    <Grid RowDefinitions="1*, 6*, 1*, 6*"
+            RowSpacing="10">
+        <!--MaximumWidthRequest="350"-->
+            <!--Padding="10">-->
 
-            <Label Grid.Row="0"
-                Text="Make a new Note!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
+        <Label Grid.Row="0"
+                Text="Start Scratching!"
+                FontSize="20"
                 HorizontalOptions="Center" />
 
-            <!--<Label 
+        <!--<Label 
                 Text="Welcome to .NET Multi-platform App UI"
                 SemanticProperties.HeadingLevel="Level1"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
                 HorizontalOptions="Center" />-->
 
-            <Editor Grid.Row="1"
+        <Editor Grid.Row="1"
                 Placeholder="Start Writing"
-                HorizontalOptions="Center" 
-                x:Name="NoteEditor"
-                HeightRequest ="300"
-                WidthRequest="300"/>
+                HorizontalOptions="Fill"
+                Margin="10"
+                x:Name="NoteEditor" />
 
-            <!--<Label 
+        <!--<Label 
                 Text="Current count: 0"
                 FontSize="18"
                 FontAttributes="Bold"
                 x:Name="CounterLabel"
                 HorizontalOptions="Center" />-->
 
-            <!--<Button 
-                Text="Click me"
+        <Button Grid.Row="2"
+                Text="Save!"
                 FontAttributes="Bold"
-                SemanticProperties.Hint="Counts the number of times you click"
+                CornerRadius="0"
                 Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />-->
+                HorizontalOptions="Center" />
 
-            <!--<Image
+        <!--<Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 WidthRequest="250"
                 HeightRequest="310"
                 HorizontalOptions="Center" />-->
-            <CollectionView Grid.Row="2"
+        <CollectionView Grid.Row="3"
+                            ItemsSource="{Binding Notes}"
                             x:Name="NotesCollectionView">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid WidthRequest="350"
-                                Padding="10"
-                                Margin="0,20"
-                                 ColumnDefinitions="2*, 5*"
-                              RowDefinitions="Auto, 50">
-                            <!--:Name="TodoItem">-->
-                            <CheckBox VerticalOptions="Center"
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="#000000"
+                            StrokeThickness="3"
+                            Padding="5"
+                            Margin="10,0">
+                        <Border.StrokeShape>
+                            <Rectangle />
+                        </Border.StrokeShape>
+                        <Grid WidthRequest="250"
+                              RowDefinitions="10*,1*">
+                            <!--ColumnDefinitions="1*, 5*"
+                                RowDefinitions="Auto, 25">-->
+                        <!--x:Name="TodoItem">-->
+                        <!--<CheckBox VerticalOptions="Center"
                                         HorizontalOptions="Center"
                                         Grid.Column="0"
-                                        Grid.Row="0" />
-                            <Label Text="{Binding Text}"
+                                        Grid.Row="0" />-->
+                        <Label Text="{Binding Text}"
                                     FontAttributes="Bold"
                                     LineBreakMode="WordWrap"
                                     HorizontalOptions="StartAndExpand"
-                                    FontSize="Large"
+                                    FontSize="15"
                                     Grid.Row="0"
                                     Grid.Column="1"/>
-                            <Label Text="{Binding CreatedDate, StringFormat='{0:dd MMM yyyy}'}"
+                        <Label Text="{Binding CreatedDate, StringFormat='{0:dd MMM yyyy}'}"
                                     Grid.Column="1"
                                     Grid.Row="1"/>
                         </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-    </ScrollView>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+    <!--</ScrollView>-->
 </ContentPage>
