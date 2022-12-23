@@ -5,7 +5,8 @@
 
     <!--<ScrollView>-->
     <Grid RowDefinitions="1*, 6*, 1*, 6*"
-            RowSpacing="10">
+            RowSpacing="10"
+          BackgroundColor="#FFE87C">
         <!--MaximumWidthRequest="350"-->
             <!--Padding="10">-->
 
@@ -21,11 +22,15 @@
                 FontSize="18"
                 HorizontalOptions="Center" />-->
 
-        <Editor Grid.Row="1"
+
+            <Editor
+                Margin="10,10"
+                 Grid.Row="1"
+                FontSize="20"
+                 AutoSize="TextChanges"
                 Placeholder="Start Writing"
-                HorizontalOptions="Fill"
-                Margin="10"
                 x:Name="NoteEditor" />
+
 
         <!--<Label 
                 Text="Current count: 0"
@@ -55,15 +60,21 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border Stroke="#000000"
+                    <Border Stroke="#D3D3D3"
                             StrokeThickness="3"
-                            Padding="5"
                             Margin="10,0">
                         <Border.StrokeShape>
                             <Rectangle />
                         </Border.StrokeShape>
-                        <Grid WidthRequest="250"
-                              RowDefinitions="10*,1*">
+                        <Border.Shadow>
+                            <Shadow Brush="#000000"
+                                    Offset="9,9"
+                                    Radius="8"
+                                    Opacity="0.8" />
+                        </Border.Shadow>
+                        <Grid WidthRequest="150"
+                              RowDefinitions="10*,1*"
+                              BackgroundColor="#F3E5AB">
                             <!--ColumnDefinitions="1*, 5*"
                                 RowDefinitions="Auto, 25">-->
                         <!--x:Name="TodoItem">-->
