@@ -46,6 +46,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\FluentSystemIcons-Filled.ttf" />
+	  <None Remove="Resources\Fonts\FluentSystemIcons-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Roboto-Light.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Include="gfg.png" />
 	</ItemGroup>
 
