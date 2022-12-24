@@ -65,6 +65,7 @@
                 FontFamily="RobotoLight"
                 Keyboard="Chat"
                  AutoSize="TextChanges"
+                Text="{Binding EditorText}"
                 Placeholder="Start Writing"
                 PlaceholderColor="#aaaaaa"
                 x:Name="NoteEditor" />
