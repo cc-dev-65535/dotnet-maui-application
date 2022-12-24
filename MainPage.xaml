@@ -83,7 +83,7 @@
                 CornerRadius="5"
                 FontFamily="RobotoLight"
                 BackgroundColor="#EE9A4D"
-                Clicked="OnCounterClicked"
+                Clicked="OnSaveClicked"
                 HorizontalOptions="Center" />
 
         <!--<Image
@@ -125,6 +125,10 @@
                               RowDefinitions="10*,1*"
                               BackgroundColor="#F3E5AB"
                                   Padding="5">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                                          Tapped="SelectNote"/>
+                                </Grid.GestureRecognizers>
                                 <!--ColumnDefinitions="1*, 5*"
                                 RowDefinitions="Auto, 25">-->
                                 <!--x:Name="TodoItem">-->

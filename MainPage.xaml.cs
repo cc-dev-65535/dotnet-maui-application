@@ -1,5 +1,7 @@
 ﻿using Scratch.Models;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using static Android.Content.ClipData;
 
 namespace Scratch
 {
@@ -7,6 +9,7 @@ namespace Scratch
     {
         public ObservableCollection<NoteItem> Notes { get; set; } = new();
         //int count = 0;
+        //public ICommand SelectNote => new Command(() => ShowNoteInEditor());
 
         public MainPage()
         {
@@ -35,8 +38,9 @@ namespace Scratch
             Notes.Add(note3);
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnSaveClicked(object sender, EventArgs e)
         {
+            await App.Current.MainPage.DisplayAlert("hi", $"You invoked the next action.", "OK");
             //count++;
             //CounterLabel.Text = $"Current count: {count}";
 
@@ -46,7 +50,12 @@ namespace Scratch
         private async void SwipeItem_Invoked(object sender, EventArgs e)
         {
             var item = sender as SwipeItem;
-            await App.Current.MainPage.DisplayAlert(item.Text, $"You invoked the { item.Text} action.", "OK");
+            await App.Current.MainPage.DisplayAlert(item.Text, $"You invoked the {item.Text} action.", "OK");
+        }
+
+        private async void SelectNote(object sender, EventArgs e)
+        {
+            await App.Current.MainPage.DisplayAlert("hi", $"You invoked the next action.", "OK");
         }
     }
 }
