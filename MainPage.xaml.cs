@@ -2,7 +2,7 @@
 using Scratch.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using static Android.Provider.ContactsContract.CommonDataKinds;
+//using static Android.Provider.ContactsContract.CommonDataKinds;
 //using static Android.Content.ClipData;
 
 namespace Scratch
@@ -43,7 +43,7 @@ namespace Scratch
             //note3.Text = "Take out th!";
             //note3.CreatedDate = DateTime.Now;
             //Notes.Add(note3);
-            await _database.DeleteAllNotes();
+            //await _database.DeleteAllNotes();
 
             var dbnotes = await _database.GetNotes();
             foreach (var dbnote in dbnotes)
