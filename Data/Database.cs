@@ -67,6 +67,11 @@ namespace Scratch.Data
             return await _connection.DeleteAsync(item);
         }
 
+        public async Task<int> DeleteNote(int id)
+        {
+            return await _connection.DeleteAsync<NoteItem>(id);
+        }
+
         public async Task<int> DeleteAllNotes()
         {
             return await _connection.DeleteAllAsync<NoteItem>();

@@ -13,7 +13,7 @@ namespace Scratch
         public ObservableCollection<NoteItem> Notes { get; set; } = new();
         // Binds to text in editor in xaml view
         public string EditorText { get; set; } = String.Empty;
-        //public ICommand SelectNote => new Command(() => ShowNoteInEditor());
+        public ICommand SelectNote { get; private set; }
         readonly Database _database;
 
         public MainPage()
@@ -22,6 +22,8 @@ namespace Scratch
             //NotesCollectionView.ItemsSource = Notes;
 
             BindingContext = this;
+
+            SelectNote = new Command<NoteItem>((note) => ShowNoteInEditor(note));
 
             _database = new Database();
             _ = Initialize();
@@ -43,6 +45,8 @@ namespace Scratch
             //note3.Text = "Take out th!";
             //note3.CreatedDate = DateTime.Now;
             //Notes.Add(note3);
+            //await _database.DeleteAllNotes();
+
             //await _database.DeleteAllNotes();
 
             var dbnotes = await _database.GetNotes();
@@ -67,7 +71,7 @@ namespace Scratch
             if (inserted != 0)
             {
                 Notes.Add(newnote);
-                EditorText = String.Empty;
+                NoteEditor.Text = String.Empty;
                 //Console.WriteLine(inserted.ToString());
                 //Console.WriteLine(inserted.ToString());
                 //Console.WriteLine(inserted.ToString());
@@ -76,13 +80,35 @@ namespace Scratch
 
         private async void SwipeItem_Invoked(object sender, EventArgs e)
         {
-            var item = sender as SwipeItem;
-            await App.Current.MainPage.DisplayAlert(item.Text, $"You invoked the {item.Text} action.", "OK");
+            var noteitem = sender as SwipeItem;
+            var found = await _database.GetNote(Convert.ToInt32(noteitem.Text));
+            var deleted = await _database.DeleteNote(found);
+            //Console.WriteLine("555555555555555555555555555555");
+            if (deleted != 0)
+            {
+                bool removed = false;
+                foreach (var item in Notes.ToList())
+                {
+                    if (item.Id == found.Id)
+                    {
+                        removed = Notes.Remove(item);
+                    }
+                }
+                Console.WriteLine(removed);
+                Console.WriteLine(found.Id.ToString());
+                Console.WriteLine(found.Text);
+            }
         }
 
-        private async void SelectNote(object sender, EventArgs e)
+        private async void ShowNoteInEditor(NoteItem noteitem)
         {
-            await App.Current.MainPage.DisplayAlert("hi", $"You invoked the next action.", "OK");
+            //await App.Current.MainPage.DisplayAlert("hi", $"You invoked the next action.", "OK");
+            Console.WriteLine(noteitem.ToString());
+            //var noteitem = sender as ;
+            var found = await _database.GetNote(noteitem.Id);
+            Console.WriteLine("55555555555555");
+            Console.WriteLine(found.Id.ToString());
+            NoteEditor.Text = found.Text;
         }
     }
 }
