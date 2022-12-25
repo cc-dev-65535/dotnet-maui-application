@@ -105,9 +105,10 @@
                     <SwipeView>
                         <SwipeView.TopItems>
                             <SwipeItems Mode="Execute">
-                                <SwipeItem Text="{Binding Id}"
+                                <SwipeItem 
                                             BackgroundColor="#FFE87C"
-                                           Invoked="SwipeItem_Invoked"/>
+                                           Command="{Binding Source={x:Reference NotePage}, Path=SwipeNote}" 
+                                           CommandParameter="{Binding .}" />
                             </SwipeItems>
                         </SwipeView.TopItems>
                         <Border Stroke="#D3D3D3"

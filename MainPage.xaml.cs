@@ -1,4 +1,5 @@
-﻿using Scratch.Data;
+﻿using Microsoft.Maui;
+using Scratch.Data;
 using Scratch.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ namespace Scratch
         // Binds to text in editor in xaml view
         public string EditorText { get; set; } = String.Empty;
         public ICommand SelectNote { get; private set; }
+        public ICommand SwipeNote { get; private set; }
         readonly Database _database;
 
         public MainPage()
@@ -24,6 +26,7 @@ namespace Scratch
             BindingContext = this;
 
             SelectNote = new Command<NoteItem>((note) => ShowNoteInEditor(note));
+            SwipeNote = new Command<NoteItem>((note) => SwipeItem_Invoked(note));
 
             _database = new Database();
             _ = Initialize();
@@ -78,25 +81,25 @@ namespace Scratch
             }
         }
 
-        private async void SwipeItem_Invoked(object sender, EventArgs e)
+        private async void SwipeItem_Invoked(NoteItem noteitem)
         {
-            var noteitem = sender as SwipeItem;
-            var found = await _database.GetNote(Convert.ToInt32(noteitem.Text));
-            var deleted = await _database.DeleteNote(found);
+            //var noteitem = sender as SwipeItem;
+            //var found = await _database.GetNote(Convert.ToInt32(noteitem.Text));
+            var deleted = await _database.DeleteNote(noteitem);
             //Console.WriteLine("555555555555555555555555555555");
             if (deleted != 0)
             {
                 bool removed = false;
                 foreach (var item in Notes.ToList())
                 {
-                    if (item.Id == found.Id)
+                    if (item.Id == noteitem.Id)
                     {
                         removed = Notes.Remove(item);
                     }
                 }
                 Console.WriteLine(removed);
-                Console.WriteLine(found.Id.ToString());
-                Console.WriteLine(found.Text);
+                Console.WriteLine(noteitem.Id.ToString());
+                Console.WriteLine(noteitem.Text);
             }
         }
 
