@@ -38,7 +38,7 @@ namespace Scratch.Data
 
         public async Task<List<NoteItem>> GetNotes()
         {
-            return await _connection.Table<NoteItem>().ToListAsync();
+            return await _connection.Table<NoteItem>().OrderByDescending(a => a.CreatedDate).ToListAsync();
         }
 
         public async Task<NoteItem> GetNote(int id)

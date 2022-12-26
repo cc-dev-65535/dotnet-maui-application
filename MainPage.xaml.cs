@@ -40,9 +40,6 @@ namespace Scratch
             foreach (var dbnote in dbnotes)
             {
                 Notes.Add(dbnote);
-                Console.WriteLine(dbnote.Id.ToString());
-                Console.WriteLine(dbnote.Text.ToString());
-                Console.WriteLine(dbnote.CreatedDate.ToString());
             }
         }
 
@@ -57,7 +54,15 @@ namespace Scratch
             var inserted = await _database.AddNote(newnote);
             if (inserted != 0)
             {
+                //Notes.ShiftAll<NoteItem>();
+                //Notes.Insert(0, newnote);
                 Notes.Add(newnote);
+                Notes.Clear();
+                var dbnotes = await _database.GetNotes();
+                foreach (var dbnote in dbnotes)
+                {
+                    Notes.Add(dbnote);
+                }
                 NoteEditor.Text = String.Empty;
             }
         }
@@ -73,6 +78,10 @@ namespace Scratch
                     if (item.Id == noteitem.Id)
                     {
                         removed = Notes.Remove(item);
+                        if (removed)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -82,6 +91,19 @@ namespace Scratch
         {
             var found = await _database.GetNote(noteitem.Id);
             NoteEditor.Text = found.Text;
+        }
+    }
+
+    public static class CollectionExtensions
+    {
+        public static void ShiftAll<T>(this ObservableCollection<T> collection)
+        {
+            int collectioncount = collection.Count;
+
+            for (int i = 0; i < collectioncount; i++)
+            {
+                collection.Move(i, i + 1);
+            }
         }
     }
 }

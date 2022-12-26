@@ -111,9 +111,10 @@
                                 </Grid.GestureRecognizers>
                                 <Label Text="{Binding Text}"
                                        FontFamily="RobotoLight"
-                                    LineBreakMode="WordWrap"
+                                    LineBreakMode="TailTruncation"
+                                       MaxLines="10"
                                     HorizontalOptions="StartAndExpand"
-                                    FontSize="15"
+                                    FontSize="13"
                                     Grid.Row="0"/>
                                 <Label Text="{Binding CreatedDate, StringFormat='{0:h:mm tt MMM, dd, yyyy}'}"
                                        FontFamily="RobotoLight"
