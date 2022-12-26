@@ -112,9 +112,9 @@
                                 <Label Text="{Binding Text}"
                                        FontFamily="RobotoLight"
                                     LineBreakMode="TailTruncation"
-                                       MaxLines="10"
+                                       MaxLines="9"
                                     HorizontalOptions="StartAndExpand"
-                                    FontSize="13"
+                                    FontSize="15"
                                     Grid.Row="0"/>
                                 <Label Text="{Binding CreatedDate, StringFormat='{0:h:mm tt MMM, dd, yyyy}'}"
                                        FontFamily="RobotoLight"

@@ -62,9 +62,9 @@ namespace Scratch.Data
             return await _connection.DeleteAllAsync<NoteItem>();
         }
 
-        public async Task<int> UpdateNote(NoteItem item)
-        {
-            return await _connection.UpdateAsync(item);
-        }
+        //public async Task<int> UpdateNote(NoteItem item)
+        //{
+        //    return await _connection.UpdateAsync(item);
+        //}
     }
 }
