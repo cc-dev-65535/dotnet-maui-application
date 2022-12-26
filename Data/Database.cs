@@ -23,27 +23,12 @@ namespace Scratch.Data
 
             _connection = new SQLiteAsyncConnection(dbOptions);
 
-            //Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
             _ = Initialize();
         }
 
         private async Task Initialize()
         {
-            //Console.WriteLine("NNNNNNNNNNNNNNNNNNNNNNN");
             await _connection.CreateTableAsync<NoteItem>();
-            //await AddNote(new NoteItem { 
-            //    Id = 3,
-            //    Text = "Hi",
-            //    CreatedDate = DateTime.Now
-            //});
-            //var the_id = await GetNote(3);
-            //Console.WriteLine(the_id.Id);
-            //Console.WriteLine(the_id.Id);
-            //Console.WriteLine(the_id.Id);
-            //Console.WriteLine(the_id.Id);
-            //Console.WriteLine(the_id.Id);
-            //Console.WriteLine("NNNNNNNNNNNNNNNNNN");
         }
 
         public async Task<int> AddNote(NoteItem item)

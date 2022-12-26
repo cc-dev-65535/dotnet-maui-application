@@ -8,8 +8,6 @@
     <Grid RowDefinitions="50, *, 40, 230"
             RowSpacing="10"
           BackgroundColor="#FFE87C">
-        <!--MaximumWidthRequest="350"-->
-        <!--Padding="10">-->
 
         <FlexLayout Grid.Row="0"
                     HorizontalOptions="FillAndExpand"
@@ -51,14 +49,6 @@
 
         </FlexLayout>
 
-        <!--<Label 
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />-->
-
-
         <Editor
                 Grid.Row="1"
                 Margin="10,10"
@@ -71,14 +61,6 @@
                 PlaceholderColor="#aaaaaa"
                 x:Name="NoteEditor" />
 
-
-        <!--<Label 
-                Text="Current count: 0"
-                FontSize="18"
-                FontAttributes="Bold"
-                x:Name="CounterLabel"
-                HorizontalOptions="Center" />-->
-
         <Button Grid.Row="2"
                 Text="Save"
                 FontAttributes="Bold"
@@ -88,12 +70,6 @@
                 Clicked="OnSaveClicked"
                 HorizontalOptions="Center" />
 
-        <!--<Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                WidthRequest="250"
-                HeightRequest="310"
-                HorizontalOptions="Center" />-->
         <CollectionView Grid.Row="3"
                             ItemsSource="{Binding Notes}"
                             x:Name="NotesCollectionView">
@@ -133,21 +109,13 @@
                                                           Command="{Binding Source={x:Reference NotePage}, Path=SelectNote}" 
                                                           CommandParameter="{Binding .}" />
                                 </Grid.GestureRecognizers>
-                                <!--ColumnDefinitions="1*, 5*"
-                                RowDefinitions="Auto, 25">-->
-                                <!--x:Name="TodoItem">-->
-                                <!--<CheckBox VerticalOptions="Center"
-                                        HorizontalOptions="Center"
-                                        Grid.Column="0"
-                                        Grid.Row="0" />-->
                                 <Label Text="{Binding Text}"
                                        FontFamily="RobotoLight"
-                                    FontAttributes="Bold"
                                     LineBreakMode="WordWrap"
                                     HorizontalOptions="StartAndExpand"
                                     FontSize="15"
                                     Grid.Row="0"/>
-                                <Label Text="{Binding CreatedDate, StringFormat='{0:h:mm tt MMM-dd-yyyy}'}"
+                                <Label Text="{Binding CreatedDate, StringFormat='{0:h:mm tt MMM, dd, yyyy}'}"
                                        FontFamily="RobotoLight"
                                        FontSize="12"
                                     Grid.Row="1"/>
