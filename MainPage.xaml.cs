@@ -45,11 +45,19 @@ namespace Scratch
 
         protected override void OnDisappearing()
         {
-            Console.WriteLine("NNNNNNNNNNNNNNNNNNNNNNNNN");
+            base.OnDisappearing();
+
+            Notes.Clear();
+            Console.WriteLine(Notes.Count);
         }
 
         private async void OnSaveClicked(object sender, EventArgs e)
         {
+            if (EditorText == "")
+            {
+                return;
+            }
+
             var newnote = new NoteItem
             {
                 Text = EditorText,
