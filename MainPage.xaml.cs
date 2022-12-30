@@ -14,26 +14,26 @@ namespace Scratch
         public ObservableCollection<NoteItem> Notes { get; set; } = new();
         // Binds to text in editor in xaml view
         public string EditorText { get; set; } = String.Empty;
-        public ICommand SelectNote { get; private set; }
-        public ICommand SwipeNote { get; private set; }
+        public ICommand SelectNote => new Command<NoteItem>((note) => ShowNoteInEditor(note));
+        public ICommand SwipeNote => new Command<NoteItem>((note) => SwipeItem_Invoked(note));
         readonly Database _database;
 
         public MainPage()
         {
             InitializeComponent();
-            //NotesCollectionView.ItemsSource = Notes;
 
             BindingContext = this;
 
-            SelectNote = new Command<NoteItem>((note) => ShowNoteInEditor(note));
-            SwipeNote = new Command<NoteItem>((note) => SwipeItem_Invoked(note));
+            //SelectNote = new Command<NoteItem>((note) => ShowNoteInEditor(note));
+            //SwipeNote = new Command<NoteItem>((note) => SwipeItem_Invoked(note));
 
             _database = new Database();
-            _ = Initialize();
+            //_ = Initialize();
         }
 
-        private async Task Initialize()
+        protected override async void OnAppearing()
         {
+            base.OnAppearing();
             //await _database.DeleteAllNotes();
 
             var dbnotes = await _database.GetNotes();
@@ -41,6 +41,11 @@ namespace Scratch
             {
                 Notes.Add(dbnote);
             }
+        }
+
+        protected override void OnDisappearing()
+        {
+            Console.WriteLine("NNNNNNNNNNNNNNNNNNNNNNNNN");
         }
 
         private async void OnSaveClicked(object sender, EventArgs e)

@@ -2,14 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Name="NotePage"
-             x:Class="Scratch.MainPage">
+             x:Class="Scratch.MainPage"
+             Shell.BackgroundColor="Black"
+             Shell.ForegroundColor="White"
+             Shell.TitleColor="White">
 
     <!--<ScrollView>-->
-    <Grid RowDefinitions="50, *, 40, 230"
+    <Grid RowDefinitions="*, 40, 230"
             RowSpacing="10"
           BackgroundColor="#FFE87C">
 
-        <FlexLayout Grid.Row="0"
+        <!--<FlexLayout Grid.Row="0"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     BackgroundColor="#000000"
@@ -47,10 +50,10 @@
 
             </HorizontalStackLayout>
 
-        </FlexLayout>
+        </FlexLayout>-->
 
         <Editor
-                Grid.Row="1"
+                Grid.Row="0"
                 Margin="10,10"
                 FontSize="20"
                 FontFamily="RobotoLight"
@@ -61,7 +64,7 @@
                 PlaceholderColor="#aaaaaa"
                 x:Name="NoteEditor" />
 
-        <Button Grid.Row="2"
+        <Button Grid.Row="1"
                 Text="Save"
                 FontAttributes="Bold"
                 CornerRadius="5"
@@ -70,7 +73,7 @@
                 Clicked="OnSaveClicked"
                 HorizontalOptions="Center" />
 
-        <CollectionView Grid.Row="3"
+        <CollectionView Grid.Row="2"
                             ItemsSource="{Binding Notes}"
                             x:Name="NotesCollectionView">
             <CollectionView.ItemsLayout>

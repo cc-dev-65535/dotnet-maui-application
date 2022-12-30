@@ -67,4 +67,16 @@
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.3" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="CollectionPage.xaml.cs">
+	    <DependentUpon>CollectionPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="CollectionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
