@@ -53,6 +53,8 @@ namespace Scratch
 
         private async void OnSaveClicked(object sender, EventArgs e)
         {
+            SaveButton.IsEnabled = false;
+            
             if (EditorText == "")
             {
                 return;
@@ -69,7 +71,7 @@ namespace Scratch
             {
                 //Notes.ShiftAll<NoteItem>();
                 //Notes.Insert(0, newnote);
-                Notes.Add(newnote);
+                //Notes.Add(newnote);
                 Notes.Clear();
                 var dbnotes = await _database.GetNotes();
                 foreach (var dbnote in dbnotes)
@@ -77,7 +79,10 @@ namespace Scratch
                     Notes.Add(dbnote);
                 }
                 NoteEditor.Text = String.Empty;
+
+                await DisplayAlert("Saved", "Your note has been saved", "OK");
             }
+            SaveButton.IsEnabled = true;
         }
 
         private async void SwipeItem_Invoked(NoteItem noteitem)

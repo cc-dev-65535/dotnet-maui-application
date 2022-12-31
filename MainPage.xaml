@@ -71,7 +71,8 @@
                 FontFamily="RobotoLight"
                 BackgroundColor="#EE9A4D"
                 Clicked="OnSaveClicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" 
+                x:Name="SaveButton" />
 
         <CollectionView Grid.Row="2"
                             ItemsSource="{Binding Notes}"
