@@ -56,7 +56,7 @@
         Route="MainPage" />
 
     <ShellContent
-        Title="About Us"
+        Title="About"
         ContentTemplate="{DataTemplate local:CollectionPage}"
         Route="CollectionPage" />
 
