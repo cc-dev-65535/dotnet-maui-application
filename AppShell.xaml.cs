@@ -1,9 +1,11 @@
-﻿namespace Scratch;
-
-public partial class AppShell : Shell
+﻿namespace Scratch
 {
-	public AppShell()
+
+	public partial class AppShell : Shell
 	{
-		InitializeComponent();
+		public AppShell()
+		{
+			InitializeComponent();
+		}
 	}
 }

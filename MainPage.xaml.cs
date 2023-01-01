@@ -14,8 +14,8 @@ namespace Scratch
         public ObservableCollection<NoteItem> Notes { get; set; } = new();
         // Binds to text in editor in xaml view
         public string EditorText { get; set; } = String.Empty;
-        public ICommand SelectNote => new Command<NoteItem>((note) => ShowNoteInEditor(note));
-        public ICommand SwipeNote => new Command<NoteItem>((note) => SwipeItem_Invoked(note));
+        public ICommand SelectNote => new Command<NoteItem>(async (note) => await ShowNoteInEditor(note));
+        public ICommand SwipeNote => new Command<NoteItem>(async (note) => await SwipeItemInvoked(note));
         readonly Database _database;
 
         public MainPage()
@@ -34,6 +34,8 @@ namespace Scratch
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            //Uncomment to refresh database table, or you can just wipe user data using android studio
             //await _database.DeleteAllNotes();
 
             var dbnotes = await _database.GetNotes();
@@ -48,7 +50,7 @@ namespace Scratch
             base.OnDisappearing();
 
             Notes.Clear();
-            Console.WriteLine(Notes.Count);
+            //Console.WriteLine(Notes.Count);
         }
 
         private async void OnSaveClicked(object sender, EventArgs e)
@@ -71,7 +73,6 @@ namespace Scratch
             {
                 //Notes.ShiftAll<NoteItem>();
                 //Notes.Insert(0, newnote);
-                //Notes.Add(newnote);
                 Notes.Clear();
                 var dbnotes = await _database.GetNotes();
                 foreach (var dbnote in dbnotes)
@@ -85,7 +86,7 @@ namespace Scratch
             SaveButton.IsEnabled = true;
         }
 
-        private async void SwipeItem_Invoked(NoteItem noteitem)
+        private async Task SwipeItemInvoked(NoteItem noteitem)
         {
             var deleted = await _database.DeleteNote(noteitem);
             if (deleted != 0)
@@ -105,7 +106,7 @@ namespace Scratch
             }
         }
 
-        private async void ShowNoteInEditor(NoteItem noteitem)
+        private async Task ShowNoteInEditor(NoteItem noteitem)
         {
             var found = await _database.GetNote(noteitem.Id);
             NoteEditor.Text = found.Text;
