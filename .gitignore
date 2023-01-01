@@ -27,7 +27,7 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
+# [Bb]in/
 [Oo]bj/
 [Oo]ut/
 [Ll]og/
@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Allow apk build files through
+bin/*
+!bin/Release/
+bin/Release/*
+!bin/Release/net6.0-android/
+bin/Release/net6.0-android/*
+!bin/Release/net6.0-android/publish/
+!bin/Release/net6.0-android/publish/*

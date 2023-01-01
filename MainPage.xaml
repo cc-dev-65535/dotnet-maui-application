@@ -12,46 +12,6 @@
             RowSpacing="10"
           BackgroundColor="#FFE87C">
 
-        <!--<FlexLayout Grid.Row="0"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    BackgroundColor="#000000"
-                    JustifyContent="Start">
-
-            <HorizontalStackLayout Margin="5,0,0,0"
-                                   Spacing="10">
-
-                <Label Text="&#xf670;"
-                    FontFamily="FluentFilled"
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalTextAlignment="Center"
-                    BackgroundColor="White"
-                    VerticalOptions="Center"
-                    WidthRequest="40"
-                    HeightRequest="40"
-                    FontSize="25">
-                    <Label.Clip>
-                        <EllipseGeometry RadiusX="18"
-                                            RadiusY="18"
-                                            Center="20,20"/>
-                    </Label.Clip>
-
-                </Label>
-
-                <Label 
-                    Text="Scratch"
-                    VerticalTextAlignment="Center"
-                    FontFamily="RobotoLight"
-                    TextColor="White"
-                    FontSize="20"
-                    FontAttributes="Bold"
-                    HorizontalOptions="StartAndExpand" />
-
-            </HorizontalStackLayout>
-
-        </FlexLayout>-->
-
         <Editor
                 Grid.Row="0"
                 Margin="10,10"
