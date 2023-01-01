@@ -1,5 +1,5 @@
 # Scratch
-Note-taking mobile application created using .NET MAUI framework.
+Cross-platform note-taking mobile application created using .NET MAUI framework.
 
 [Git Repo](https://github.com/grepsedawkcat/dotnet-maui-application)  
 
